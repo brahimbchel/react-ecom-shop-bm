@@ -3,7 +3,7 @@ import React from 'react'
 
 const Logo = () => {
   return (
-    <div>LOGO</div>
+    <div className=''>LOGO</div>
   )
 }
 

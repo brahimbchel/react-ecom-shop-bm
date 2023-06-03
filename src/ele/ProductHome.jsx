@@ -15,10 +15,10 @@ const ProductHome = () => {
   }, []);
 
   return (
-    <div className='px-4 py-4'>
-    <ul className='grid grid-cols-2 gap-4'>
+    <div className='px-4 py-4 md:px-8'>
+    <ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4'>
       {products.slice(0, 8).map(product => (
-        <li key={product.id}>
+        <li key={product._id}>
           <ProductCart product={product} />
         </li>
       ))}

@@ -1,33 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-function NavBarMini({ isMenuOpen }) {
-  const [categories, setCategories] = useState([]);
+function NavBarMini({ isMenuOpen, categories }) {
   const [isCatOpen, setIsCatOpen] = useState(false);
 
   const handleCatToggle = () => {
     setIsCatOpen(!isCatOpen);
   };
 
-  useEffect(() => {
-    fetch('https://api.storerestapi.com/categories')
-      .then(response => response.json())
-      .then(data => {
-        setCategories(data.data || []);
-      })
-      .catch(error => console.error(error));
-  }, []);
-
   return (
     <>
       {isMenuOpen && (
         <nav className="bg-white fixed z-50 h-screen w-[90%]">
           <ul className='py-16 flex flex-col  text-l'>
-            <li className="bg-gray-200 py-2 px-8">Home</li>
-            <li className="py-2 px-8">Catalog</li>
-            <li className="bg-gray-200 py-2 px-8">
+            <li key={1000} className="bg-gray-200 py-2 px-8">Home</li>
+            <li key={2000} className="py-2 px-8">Catalog</li>
+            <li key={3000} className="bg-gray-200 py-2 px-8">
               <span onClick={handleCatToggle}>Categories {"->"}</span>
             </li>
-            <li className="py-2 px-8">Contact</li>
+            <li key={4000} className="py-2 px-8">Contact</li>
           </ul>
         </nav>
       )}
