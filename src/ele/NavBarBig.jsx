@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const NavBarBig = ({categories}) => {
   const [isCatOpen, setIsCatOpen] = useState(false);
@@ -11,26 +12,28 @@ const NavBarBig = ({categories}) => {
 
   return (
     <nav className='mdmax:hidden'>
-      <div className="flex gap-6">
-        <div className="">Home</div>
-        <div className="">Catalog</div>
+      <ul className="flex gap-6">
+        <li className=""><Link to="/">Home</Link></li>
+        <li className=""><Link to="/catalog">Catalog</Link></li>
+
         {!isCatOpen 
-          ? (<div className="" onClick={handleCatToggle}>
+          ? (<li className="" onClick={handleCatToggle}>
             <span className='pr-2'>Categories</span> 
             <FontAwesomeIcon icon={faChevronDown} />
-          </div>) 
-          : (<div className='' onClick={handleCatToggle}>
+          </li>) 
+          : (<li className='' onClick={handleCatToggle}>
             <span className='pr-2 pb-2'>Categories</span> 
             <FontAwesomeIcon icon={faChevronUp} />
             <ul className="absolute z-10 flex flex-col gap-4 bg-white p-8 border rounded shadow-lg">
               {categories.map((cat) => (
-                <li key={cat._id} className='text-xl'>{cat.name}</li>
+                <li key={cat._id} className='text-xl'><Link to={`/cat/${cat._id}`}>{cat.name}</Link></li>
               ))}
             </ul>
-          </div>)
+          </li>)
         }
-        <div className="">Contact</div>
-      </div>
+
+        <li className=""><Link to="/contact">Contact</Link></li>
+      </ul>
     </nav>
   )
 }

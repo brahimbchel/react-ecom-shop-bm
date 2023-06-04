@@ -1,19 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ProductCart from './ProductCart';
 
-
-const ProductHome = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch('https://api.storerestapi.com/products')
-      .then(response => response.json())
-      .then(data => {
-        setProducts(data.data || [])
-      })
-      .catch(error => console.error(error));
-  }, []);
-
+const ProductHome = ({products}) => {
   return (
     <div className='px-4 py-4 md:px-8'>
     <ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4'>
