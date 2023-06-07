@@ -4,7 +4,6 @@ import { faTwitter, faInstagram, faFacebook, faTiktok } from '@fortawesome/free-
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
   const [email, setEmail] = useState('');
 
   const handleSubmit = e => {
@@ -20,7 +19,6 @@ const Footer = () => {
   const handleEmailChange = e => {
     setEmail(e.target.value);
   };
-
 
   return (
     <footer className='py-8'>
@@ -42,9 +40,6 @@ const Footer = () => {
       </form>
       </div>
       <div className=" px-4">
-        <div className="">
-          nav
-        </div>
         <div className="flex justify-center items-center gap-2 py-2 text-xl">
           <FontAwesomeIcon icon={faFacebook} />
           <FontAwesomeIcon icon={faInstagram} />

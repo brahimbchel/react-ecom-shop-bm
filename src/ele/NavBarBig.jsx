@@ -17,7 +17,7 @@ const NavBarBig = ({categories}) => {
         <li className=""><Link to="/catalog">Catalog</Link></li>
 
         {!isCatOpen 
-          ? (<li className="" onClick={handleCatToggle}>
+          ? (<li className="" id='cat' onClick={handleCatToggle}>
             <span className='pr-2'>Categories</span> 
             <FontAwesomeIcon icon={faChevronDown} />
           </li>) 
@@ -26,7 +26,11 @@ const NavBarBig = ({categories}) => {
             <FontAwesomeIcon icon={faChevronUp} />
             <ul className="absolute z-10 flex flex-col gap-4 bg-white p-8 border rounded shadow-lg">
               {categories.map((cat) => (
-                <li key={cat._id} className='text-xl'><Link to={`/cat/${cat._id}`}>{cat.name}</Link></li>
+                <li key={cat._id} className='text-xl'>
+                  <Link to={`/category/${cat._id}`}>
+                    {cat.name}
+                  </Link>
+                </li>
               ))}
             </ul>
           </li>)

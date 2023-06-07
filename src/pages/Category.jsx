@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from "react-router";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSliders } from '@fortawesome/free-solid-svg-icons'
-import ProductCart from '../ele/ProductCart'
+import { Link } from 'react-router-dom';
 
 
 function Category({categories, products}) {
@@ -36,17 +36,20 @@ function Category({categories, products}) {
           <FontAwesomeIcon icon={faSliders} />
           <span>Filter and Sort</span>
         </div>
-        <div className="">{category.products.length} Products</div>
+        <div className="">{categoryProducts.length} Products</div>
       </div>
 
       <ul className='grid gap-4 grid-cols-2 pt-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-8'>
         {categoryProducts.map((product) => (
           <li key={product._id}>
+            <Link to={`/product/${product._id}`}>
             <div>
               <img src='./../product-1.jpg'/>
               <div className="">{product.title.slice(0, 20)}....</div>
               <div className="">From ${product.price} USD</div>
             </div>
+            </Link>
+            
           </li>
         ))}
       </ul>

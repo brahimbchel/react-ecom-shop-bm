@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductCart from './ProductCart';
+import { Link } from 'react-router-dom';
 
 const ProductHome = ({products}) => {
   return (
@@ -7,11 +8,17 @@ const ProductHome = ({products}) => {
     <ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4'>
       {products.slice(0, 8).map(product => (
         <li key={product._id}>
-          <ProductCart product={product} />
+          <Link to={`/product/${product._id}`}>
+            <ProductCart product={product} />
+          </Link>
         </li>
       ))}
     </ul>
-    <button className='bg-black text-white px-8 py-3 mt-8 mx-auto flex'>View All</button>
+    <Link to="/catalog" >
+      <button className='bg-black text-white px-8 py-3 mt-8 mx-auto flex'>
+        View All
+      </button>
+    </Link>
   </div>
   )
 }

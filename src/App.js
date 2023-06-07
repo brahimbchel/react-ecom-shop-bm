@@ -7,10 +7,13 @@ import Catalog from "./pages/Catalog";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Category from "./pages/Category";
+import ProductPost from "./ele/ProductPost";
+import Admin from "./pages/Admin";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     fetch("https://api.storerestapi.com/products")
@@ -33,17 +36,30 @@ function App() {
   return (
     <>
       <Router>
-        <Header />
+        <Header cartItems={cartItems} setCartItems={setCartItems} />
 
         <Routes>
           <Route path="/" element={<Home products={products} />}></Route>
+          <Route path="/admin" element={<Admin />}></Route>
           <Route path="/catalog" element={<Catalog products={products} />} />
-          <Route path="/cat/:id" element={<Category categories={categories} products={products} />}></Route>
+          <Route
+            path="/category/:id"
+            element={<Category categories={categories} products={products} />}
+          ></Route>
           <Route path="/contact" element={<Contact />}></Route>
+          <Route
+            path="/product/:id"
+            element={
+              <ProductPost
+                products={products}
+                cartItems={cartItems}
+                setCartItems={setCartItems}
+              />
+            }
+          ></Route>
         </Routes>
 
-        {/* <Category categories={categories}/> */}
-        <Footer />
+        <Footer categories={categories} />
       </Router>
     </>
   );
