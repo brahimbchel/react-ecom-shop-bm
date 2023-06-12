@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import ProductCart from './ProductCart';
 import { Link } from 'react-router-dom';
 
@@ -9,8 +11,13 @@ const ProductHome = ({products}) => {
       {products.slice(0, 8).map(product => (
         <li key={product._id}>
           <Link to={`/product/${product._id}`}>
-            <ProductCart product={product} />
-          </Link>
+            <img src='./product-1.jpg'/>
+            <div className="">{product.title.slice(0, 20)}....</div>
+            </Link>
+            <div className="flex justify-between items-center">
+              <div className="">From ${product.price} USD</div>
+              <FontAwesomeIcon icon={faEllipsisVertical} />
+            </div>
         </li>
       ))}
     </ul>

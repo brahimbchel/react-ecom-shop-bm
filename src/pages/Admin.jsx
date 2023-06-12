@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import AddProductForm from '../ele/AddProductForm';
 
+function Admin({categories}) {
 
-function Admin() {
   return (
-    <div>Admin</div>
+    <main className='mx-4 md:mx-8'>
+      <AddProductForm categories={categories} />
+    </main>
   )
 }
 

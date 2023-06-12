@@ -9,6 +9,8 @@ import Contact from "./pages/Contact";
 import Category from "./pages/Category";
 import ProductPost from "./ele/ProductPost";
 import Admin from "./pages/Admin";
+import CatalogAdmin from "./pages/CatalogAdmin";
+import SignIn from "./pages/SignIn";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -40,8 +42,16 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home products={products} />}></Route>
-          <Route path="/admin" element={<Admin />}></Route>
+          <Route
+            path="/admin"
+            element={<Admin categories={categories} />}
+          ></Route>
+          <Route path="/sign-in" element={<SignIn />} />
           <Route path="/catalog" element={<Catalog products={products} />} />
+          <Route
+            path="/catalog-admin"
+            element={<CatalogAdmin products={products} />}
+          />
           <Route
             path="/category/:id"
             element={<Category categories={categories} products={products} />}

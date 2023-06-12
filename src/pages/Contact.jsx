@@ -19,7 +19,7 @@ const Contact = () => {
   };
 
   return (
-    <div className='px-4 pt-8 md:px-32 lg:px-64'>
+    <main className='px-4 pt-8 md:px-32 lg:px-64'>
       <h2 className="text-3xl pb-16">Contact</h2>
 
       <form onSubmit={handleSubmit} className='flex flex-col gap-4 pb-32 md:pb-64 lg:pb-96'>
@@ -72,7 +72,7 @@ const Contact = () => {
         <button type="submit" className='bg-black text-white px-8 py-3'>Submit</button>
         </div>
       </form>
-    </div>
+    </main>
   )
 }
 

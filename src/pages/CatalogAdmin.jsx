@@ -4,7 +4,7 @@ import { faSliders, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons
 import ProductCart from '../ele/ProductCart'
 import { Link } from 'react-router-dom';
 
-const Catalog = ({products}) => {
+const CatalogAdmin = ({products}) => {
   return (
     <div className='p-4 md:mx-8'>
       <h2 className='text-3xl pb-16'>Products</h2>
@@ -20,6 +20,7 @@ const Catalog = ({products}) => {
       <ul className='grid gap-4 grid-cols-2 pt-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-8'>
         {products.map((product) => (
           <li key={product._id}>
+            {/* <ProductCart product={product} /> */}
             <Link to={`/product/${product._id}`}>
             <img src='./product-1.jpg'/>
             <div className="">{product.title.slice(0, 20)}....</div>
@@ -35,4 +36,4 @@ const Catalog = ({products}) => {
   )
 }
 
-export default Catalog
+export default CatalogAdmin
