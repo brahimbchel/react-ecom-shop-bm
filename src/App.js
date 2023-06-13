@@ -11,6 +11,7 @@ import ProductPost from "./ele/ProductPost";
 import Admin from "./pages/Admin";
 import CatalogAdmin from "./pages/CatalogAdmin";
 import SignIn from "./pages/SignIn";
+import LogIn from "./pages/LogIn";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -47,6 +48,7 @@ function App() {
             element={<Admin categories={categories} />}
           ></Route>
           <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/log-in" element={<LogIn />} />
           <Route path="/catalog" element={<Catalog products={products} />} />
           <Route
             path="/catalog-admin"

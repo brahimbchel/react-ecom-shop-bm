@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
   const [name, setName] = useState('');
@@ -26,7 +27,7 @@ const SignIn = () => {
     setError('');
 
     // sending data to a server
-    console.log('Submitted:', { name, email,number, password, passwordRepeat });
+    // console.log('Submitted:', { name, email,number, password, passwordRepeat });
 
     fetch('https://api.storerestapi.com/auth/register',
       {
@@ -47,7 +48,9 @@ const SignIn = () => {
   };
 
   return (
-    <main className='px-4 pt-8 md:px-32 lg:px-64'>
+    <main className='px-4 pt-8 mx-auto max-w-sm'>
+      <h2 className="text-3xl pb-8 flex justify-center items-center">Sign In</h2>
+
       <form onSubmit={handleSubmit} className='flex flex-col gap-4 justify-center'>
         <div className="">
           <label htmlFor='name' className='sr-only'>Name:</label>
@@ -113,6 +116,9 @@ const SignIn = () => {
 
         <button type='submit' className='bg-black text-white px-8 py-3'>Done</button>
       </form>
+      <div className='text-blue-800 mt-4'>
+        <Link to="/log-in" >already have an account</Link>
+      </div>
     </main>
   );
 };

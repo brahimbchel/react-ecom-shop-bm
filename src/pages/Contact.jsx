@@ -9,7 +9,7 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform form submission logic here, such as sending data to a server
+    // Sending data to a server
     console.log('Submitted:', { name, email, comment });
     // Reset form fields
     setName('');
