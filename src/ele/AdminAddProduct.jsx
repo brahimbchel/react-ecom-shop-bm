@@ -1,34 +1,24 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react'
 
-const AddProductForm = ({categories}) => {
-  const [name, setName] = useState('');
+
+const AdminAddProduct = ({categories}) => {
+  const [title, setTitle] = useState('');
   const [image, setImage] = useState("");
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
 
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
-  };
-
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    // Process the uploaded image file as needed
-    // console.log(file);
-    setImage(file)
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     // Validate the form input
-    if (name.trim() === '' || price.trim() === '' || category.trim() === '') {
+    if (title.trim() === '' || price.trim() === '' || category.trim() === '') {
       alert('Please enter a name and price for the product.');
       return;
     }
 
     // Create a new product object
     const newProduct = {
-      title: name,
+      title: title,
       price: parseFloat(price),
       description: description,
       category: category
@@ -53,7 +43,7 @@ const AddProductForm = ({categories}) => {
       });
 
     // Clear the form fields
-    setName('');
+    setTitle('');
     setImage('');
     setPrice('');
     setDescription('');
@@ -61,18 +51,19 @@ const AddProductForm = ({categories}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='border border-blue-900 py-4 mx-4 md:mx-8 w-fit'>
+    <main className=''>
+      <form onSubmit={handleSubmit} className=' border border-blue-900 py-4 mx-4 md:mx-8'>
       <h2 className='flex justify-center'>Add Product</h2>
 
       <div className='my-2 mx-4 border px-2'>
-        <label htmlFor="name" className='sr-only'>Name:</label>
+        <label htmlFor="title" className='sr-only'>Title:</label>
         <input
           type="text"
-          id="name"
-          placeholder="Name"
+          id="title"
+          placeholder="Title"
           className='px-2 w-full py-2 focus:outline-0'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
       </div>
 
@@ -92,7 +83,7 @@ const AddProductForm = ({categories}) => {
       <div className='my-2 mx-4 border px-2'>
         <label htmlFor="category" className='sr-only'>Category:</label>
         <select id="category" className='px-2 w-full py-2 focus:outline-0' placeholder='Select a category'
-          value={category} onChange={handleCategoryChange}>
+          value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">Select a category</option>
           {categories.map((category) => (
             <option key={category._id} value={category._id}>{category.name}</option>
@@ -109,7 +100,12 @@ const AddProductForm = ({categories}) => {
           placeholder="Image"
           className='px-2 w-full py-2 focus:outline-0'
           // value={image}  // The value attribute should not be used
-          onChange={handleImageUpload}
+          onChange={(e) => {
+            const file = e.target.files[0];
+            // Process the uploaded image file as needed
+            // console.log(file);
+            setImage(file)
+          }}
         />
       </div>
       
@@ -128,8 +124,8 @@ const AddProductForm = ({categories}) => {
         <button type="submit" className='bg-blue-200 px-4 py-1'>Add</button>
       </div>
     </form>
-    
-  );
-};
+    </main>
+  )
+}
 
-export default AddProductForm;
+export default AdminAddProduct

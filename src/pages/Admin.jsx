@@ -1,7 +1,9 @@
 import React , { useState, useEffect } from 'react';
-import AddProductForm from '../ele/AddProductForm';
+import { Routes, Route } from "react-router-dom";
 import AdminCarts from '../ele/AdminCarts';
 import AdminSideBar from '../ele/AdminSideBar';
+import AdminProductsListTable from '../ele/AdminProductsListTable';
+import AdminAddProduct from '../ele/AdminAddProduct';
 
 function Admin() {
   const [products, setProducts] = useState([]);
@@ -37,9 +39,14 @@ function Admin() {
 
   return (
     <main className='mx-4 my-4 md:mx-8 flex items-start gap-4'>
-      {/* <AddProductForm categories={categories} /> */}
       <AdminSideBar />
-      <AdminCarts users={users} categories={categories} products={products} />
+      <div className="flex-1">
+        <Routes>
+          <Route path="/" element={<AdminCarts users={users} categories={categories} products={products} />} />
+          <Route path="/products-list" element={<AdminProductsListTable products={products} />} />
+          <Route path="/add-product" element={<AdminAddProduct categories={categories} />} />
+        </Routes>
+      </div>
     </main>
   )
 }

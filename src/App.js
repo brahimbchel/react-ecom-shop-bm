@@ -43,7 +43,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home products={products} />}></Route>
-          <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/admin/*" element={<Admin />}></Route>
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/log-in" element={<LogIn />} />
           <Route path="/catalog" element={<Catalog products={products} />} />
