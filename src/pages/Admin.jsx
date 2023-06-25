@@ -4,6 +4,7 @@ import AdminCarts from '../ele/AdminCarts';
 import AdminSideBar from '../ele/AdminSideBar';
 import AdminProductsListTable from '../ele/AdminProductsListTable';
 import AdminAddProduct from '../ele/AdminAddProduct';
+import EditProductForm from '../ele/EditProductForm';
 
 function Admin() {
   const [products, setProducts] = useState([]);
@@ -43,8 +44,9 @@ function Admin() {
       <div className="flex-1">
         <Routes>
           <Route path="/" element={<AdminCarts users={users} categories={categories} products={products} />} />
-          <Route path="/products-list" element={<AdminProductsListTable products={products} />} />
+          <Route path="/products-list" element={<AdminProductsListTable products={products} setProducts={setProducts} />} />
           <Route path="/add-product" element={<AdminAddProduct categories={categories} />} />
+          <Route path="/edit-product/:productId" element={<EditProductForm categories={categories}/>} />
         </Routes>
       </div>
     </main>
